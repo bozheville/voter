@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html ng-app="voter">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/1.2/base.min.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/1.2/layout.css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/1.2/skeleton.min.css"/>
+</head>
+<body ng-controller="App">
+<div class="sixteen columns">
+    <div id="signin-button" class="show">
+        <div class="g-signin"
+             data-callback="loginFinishedCallback"
+             data-approvalprompt="force"
+             data-clientid="342919071522.apps.googleusercontent.com"
+             data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.profile.emails.read"
+             data-height="short"
+             data-cookiepolicy="single_host_origin"
+                >
+        </div>
+    </div>
+    <div id="profile" class="hide">
+        <div>
+            <span id="pic"></span>
+            <span id="name"></span>
+        </div>
+
+        <div id="email"></div>
+    </div>
+</div>
+<div class="sixteen columns">lalal</div>
+<script src="//code.angularjs.org/1.2.9/angular.min.js" type="text/javascript"></script>
+<script src="//code.angularjs.org/1.2.9/angular-cookies.min.js" type="text/javascript"></script>
+<script src="//voter.grybov.com/app.js" type="text/javascript"></script>
+<script type="text/javascript">
+    var profile, email;
+
+    function loginFinishedCallback(authResult) {
+        if (authResult) {
+            if (authResult['error'] == undefined){
+                toggleElement('signin-button');
+                gapi.client.load('plus','v1', loadProfile);
+            } else {
+                console.log('An error occurred');
+            }
+        } else {
+            console.log('Empty authResult');
+        }
+    }
+
+    function loadProfile(){
+        var request = gapi.client.plus.people.get( {'userId' : 'me'} );
+        request.execute(loadProfileCallback);
+    }
+
+    function loadProfileCallback(obj) {
+        profile = obj;
+        email = obj['emails'].filter(function(v) {
+            return v.type === 'account';
+        })[0].value;
+        displayProfile(profile);
+    }
+
+    function displayProfile(profile){
+        document.getElementById('name').innerHTML = profile['displayName'];
+        document.getElementById('pic').innerHTML = '<img src="' + profile['image']['url'] + '" />';
+        document.getElementById('email').innerHTML = email;
+        toggleElement('profile');
+    }
+
+    function toggleElement(id) {
+        var el = document.getElementById(id);
+        if (el.getAttribute('class') == 'hide') {
+            el.setAttribute('class', 'show');
+        } else {
+            el.setAttribute('class', 'hide');
+        }
+    }
+</script>
+<script src="https://apis.google.com/js/client:plusone.js" type="text/javascript"></script>
+</body>
+</html>
