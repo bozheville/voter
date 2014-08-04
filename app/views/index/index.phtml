@@ -1,0 +1,49 @@
+<div ng-controller="addPoll">
+
+
+    <div id="newPoll">
+        <div class="row">
+            <h1>Create new poll</h1>
+        </div>
+        <div class="row">
+            <div class="col col_1_of_5">Question</div>
+            <div class="col col_3_of_5"><textarea ng-model="newPoll.question"></textarea></div>
+            <div class="col col_1_of_5">
+                <button ng-click="addAnswer();">Add answer</button>
+                <br/>
+                <button ng-click="save();">Save poll</button>
+            </div>
+        </div>
+        <div class="row" ng-repeat="(k, answer) in newPoll.answers track by $index">
+            <div class="col col_1_of_5">Answer #{{k}}</div>
+            <div class="col col_3_of_5"><input type="text" ng-model="newPoll.answers[k].text"/></div>
+            <div class="col col_1_of_5">
+                <button ng-disabled="newPoll.answers.length < 3" ng-click="rmAnswer(k);">Delete</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col_1_of_5">Min voters</div>
+            <div class="col col_3_of_5">
+                <input type="number"min="0" name="minvoters" ng-model="newPoll.minvoters">
+            </div>
+            <div class="col col_1_of_5"></div>
+
+        </div>
+        <div class="row">
+            <div class="col col_1_of_5">Ends at</div>
+            <div class="col col_3_of_5">
+                <input ng-model="newPoll.ends" type="datetime-local">
+            </div>
+            <div class="col col_1_of_5"></div>
+
+        </div>
+
+    </div>
+    <div id="myPolls">
+        <ul>
+            <li class="header"><h1>My polls</h1></li>
+            <li ng-repeat="(id, poll) in myPolls.polls track by $index" ng-click="myPolls.open(id);">#{{id}}: {{poll}}</li>
+        </ul>
+    </div>
+
+</div>

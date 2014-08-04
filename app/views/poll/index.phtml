@@ -1,0 +1,20 @@
+<div ng-controller="poll" id="poll">
+    <h1>
+        {{poll.question}}
+        <small ng-show="poll.not_ready"> - No enough votes</small>
+        <small ng-show="poll.finished"> - Poll finished</small>
+        <small ng-show="!poll.finished && poll.ends"> - Finish at {{poll.ends}}</small>
+    </h1>
+    <ul>
+        <li ng-if="!poll.voted" ng-repeat="(k, answer) in poll.answers track by $index">
+            <label ng-class="{voted: voted == k, disabled: voted >= 0}" class="vote_for" for="vote_{{k}}">
+                <input ng-disabled="voted>=0" id="vote_{{k}}" type="checkbox" ng-click="vote(k);"/>
+                {{answer}}
+            </label>
+        </li>
+
+        <li class="results" ng-if="poll.voted" ng-repeat="(k, answer) in poll.answers track by $index" ng-class="{winner: answer.winner}">
+                {{answer.text}} <span ng-show="answer.votes">({{answer.votes}}, {{answer.rel}} %)</span>
+        </li>
+    </ul>
+</div>

@@ -1,4 +1,0 @@
-voter
-=====
-
-anonymous voting system

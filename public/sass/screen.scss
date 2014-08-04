@@ -1,0 +1,187 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+
+body{margin: 0; padding: 0;}
+h1{
+  margin-left: 15px;
+  font-size: 2em;
+  font-weight: bold;
+  padding: 5px;
+}
+
+header{
+  background-color: #2F3440;
+  color: #FFFBF0;
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100%;
+
+  ul#navbar{
+    list-style: none; padding: 0; margin: 0;
+    li{
+      display: inline-block;
+      a{
+        display: block;
+        padding: 10px 15px;
+        background-color: inherit;
+        cursor: pointer;
+        text-decoration: none;
+        color: #FFFBF0;
+      }
+      a:hover{
+        background-color: #E96044;
+        color: #FFFBF0;
+      }
+    }
+  }
+}
+
+
+main {
+  width: 100%;
+//  margin: 15px auto;
+//  background-color: #f0f0f0;
+  margin: 50px 0px 70px;
+  overflow: hidden;
+
+ 
+
+  #newPoll{
+    float: left;
+    width: 75%;
+    input, textarea{
+      width: 98%;
+      font-size: 1.2em;
+      line-height: 1.2em;
+    }
+    textarea{
+      height: 5em;
+      resize: none;
+    }
+    .row{
+      background-color: #F7D9B3;
+      width: 70%;
+      float: left;
+      margin: 0 15% 5px;
+      padding: 5px;
+      .col{
+        float: left;
+        margin-left: 5px;
+        padding: 2px;
+      }
+      .col:first-of-type{
+        text-align: right;
+        max-width: 18%;
+        width: auto !important;
+        min-width: 100px;
+        font-size: 1.3em;
+      }
+      .col.col_1_of_5{width: 18%;}
+      .col.col_3_of_5{width: 58%;}
+    }
+  }
+
+  #myPolls{
+    float: left;
+    width: 23%;
+
+    ul{
+      list-style: none;
+      li{
+        background-color: #F7D9B3;
+        padding: 5px;
+        margin-bottom: 5px;
+      }
+      li:not(.header){
+        cursor: pointer;
+      }
+      li:not(.header):hover{
+        background-color: #E96044;
+        color: #FFFBF0;
+      }
+
+    }
+  }
+
+  #poll{
+
+    h1{
+      background-color: #F7D9B3;
+      margin-left: 0;
+    }
+
+    label.vote_for{
+      width: 100%;
+      display: inline-block;
+      cursor: pointer;
+      background-color: #F7D9B3;
+      padding: 5px;
+    }
+
+    ul{
+      width: 100%;
+      list-style: none;
+      li{
+        width: 100%;
+        margin-top: 5px;
+      }
+      li.results{
+        background-color: #F7D9B3;
+        padding: 5px;
+      }
+    }
+
+    li.results.winner, label.vote_for.disabled.voted, label.vote_for:not(.disabled):hover{
+      background-color: #E96044;
+      color: #FFFBF0;
+    }
+
+    label.vote_for.disabled{
+      cursor: default;
+    }
+
+  }
+
+}
+
+
+
+footer{
+  background-color: #2F3440;
+  color: #FFFBF0;
+  text-align: center;
+  padding: 10px 15px 20px;
+  position: fixed;
+  bottom:0;
+  left: 0;
+  width: 100%;
+  font-size: 0.7em;
+}
+
+
+
+@media all and (max-width: 1000px){
+  #newPoll{
+    width: 98% !important;
+    margin: 0 1% 5px !important;
+    .row{
+      width: 100% !important;
+      margin: 0 0 5px !important;
+      padding: 0 !important;
+      .col{
+        margin: 0 !important;
+      }
+    }
+  }
+  #myPolls{
+    width: 98% !important;
+    margin: 0 1% 5px !important;
+  }
+  .row .col {width: 100% !important;}
+}
+

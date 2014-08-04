@@ -1,0 +1,44 @@
+body{background-color: #c0c0c0;margin: 0; padding: 0;}
+header{
+    background-color: #232323;
+    color: #dedede;
+}
+
+
+main {
+    width: 95%;
+    margin: 0 auto;
+    background-color: #f0f0f0;
+    padding: 15px 10px 30px;
+    overflow: hidden;
+}
+
+footer{
+    background-color: #232323;
+    color: #dedede;
+    text-align: center;
+    padding: 10px 15px 20px;
+}
+
+label.vote_for{width: 100%; display: inline-block; cursor: pointer;}
+label.vote_for.disabled.voted, label.vote_for:not(.disabled):hover{background-color: #c0c0c0;}
+label.vote_for.disabled{cursor: default;}
+
+
+ul#navbar{ list-style: none; padding: 0; margin: 0;}
+ul#navbar li{display: inline-block;}
+ul#navbar li a{display: block; padding: 10px 15px; background-color: #c0c0c0; cursor: pointer; text-decoration: none;}
+
+#newPoll textarea, #newPoll input {width: 98%;}
+#newPoll textarea{height: 50px; resize: none;}
+.row{width: 100%;}
+.row, .row .col{float: left;}
+.row .col{margin-left: 5px; padding: 2px;}
+.row .col.col_1_of_5{width: 18%;}
+.row .col.col_3_of_5{width: 58%;}
+
+
+@media only screen and (max-width: 960px){
+    #container {width: 95% !important;}
+    .row .col {width: 100% !important;}
+}

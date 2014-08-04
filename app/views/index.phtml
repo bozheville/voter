@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="dniwePollster">
+	<head>
+		<title>Голос днища</title>
+        <link href="//pollster.nadniwe.info/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+        <link href="//pollster.nadniwe.info/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+        <!--[if IE]>
+        <link href="//pollster.nadniwe.info/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+        <![endif]-->
+
+    </head>
+	<body>
+        <header>
+            <ul id="navbar">
+                <li>
+                    <a href="/">Add new poll</a>
+                </li>
+            </ul>
+        </header>
+        <main>
+            <?php echo $this->getContent(); ?>
+        </main>
+        <footer>
+            <?=ParentModel::getCopyright();?>
+        </footer>
+        <script>
+            var base_url = 'http://onlinepolls.info';
+        </script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+        <script src="//pollster.nadniwe.info/js/app.js"></script>
+	</body>
+</html>
